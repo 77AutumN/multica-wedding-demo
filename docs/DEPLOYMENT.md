@@ -4,7 +4,7 @@
 
 ## 固定版本
 
-Multica前后端与CLI 0.4.44；Claude Code 2.1.261；Lark CLI 1.0.90。最近成功CRM Run报告模型为 claude-sonnet-5，Agent没有模型覆盖；首次婚宴Run再次核验，本轮不主动换模型。
+Multica前后端与CLI 0.4.44；Claude Code 2.1.261；Lark CLI 1.0.90。实际婚宴 Run 的 task_usage 已核验模型为 claude-sonnet-5，Agent没有模型覆盖；本轮没有主动换模型。
 
 ## 候选切换
 

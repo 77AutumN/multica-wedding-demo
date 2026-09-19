@@ -1,0 +1,27 @@
+# Source-only repository. Runtime material belongs outside this checkout.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/AGENTS.md
+!/ops/
+!/tests/
+!/skills/
+!/docs/
+!/examples/
+!/.github/
+**/.env
+**/.env.*
+**/connection.json
+**/*.local.*
+**/state.initial.json
+**/pending-write.json
+**/wedding-demo-state.json
+**/runtime/
+**/evidence/
+**/backups/
+**/*.dump
+**/*.zip
+**/*.exe
+**/*.pem
+**/*.key

@@ -99,7 +99,7 @@ function Get-CrmConfirmCode([string]$Text) {
     return $Matches[1]
 }
 function ConvertTo-CrmDate($Value) {
-    if($null -eq $Value -or $Value -eq ''){return $null}
+    if($null -eq $Value -or ($Value -is [string] -and $Value -ceq '')){return $null}
     if($Value -is [datetime]){return $Value.ToString('yyyy-MM-dd HH:mm')}
     $text=[string]$Value
     if($text -match '^\d{4}-\d{2}-\d{2}$') {
@@ -122,7 +122,7 @@ function Get-CrmComparable([string]$Key,$Value) {
     }
     if($Key -eq '阶段'){return (@($Value) -join '')}
     if($Key -eq '关联客户'){return (@($Value | ForEach-Object { $_.id } | Sort-Object) -join ',')}
-    if($null -eq $Value -or $Value -eq ''){return $null}
+    if($null -eq $Value -or ($Value -is [string] -and $Value -ceq '')){return $null}
     return [string]$Value
 }
 function Test-CrmFields($Actual,$Expected) {
@@ -130,7 +130,7 @@ function Test-CrmFields($Actual,$Expected) {
     return $true
 }
 function Get-CrmDisplayValue([string]$Key,$Value) {
-    if($null -eq $Value -or $Value -eq ''){return '未填写'}
+    if($null -eq $Value -or ($Value -is [string] -and $Value -ceq '')){return '未填写'}
     if($Key -in @('负责人','记录人')){return Get-CrmMemberName ([string]$Value)}
     if($Key -in @('跟进日期','沟通时间')){
         $date=ConvertTo-CrmDate $Value

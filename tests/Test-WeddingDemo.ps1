@@ -31,6 +31,8 @@ function Write-WeddingRow($Fields,[string]$RecordId){
     if($RecordId){$r=@($script:Rows|Where-Object {$_.record_id -ceq $RecordId});Assert ($r.Count -eq 1) 'Missing row';foreach($k in $Fields.Keys){$r[0][$k]=$Fields[$k]}}
     else{$r=Copy-Wedding $Fields;$r.record_id='recOffline'+$script:Writes;$script:Rows=@($script:Rows)+@($r)}
     if($script:Failure -eq 'mismatch'){$script:Rows[-1]['金额分']=1}
+    if($script:Failure -eq 'missing-zero'){[void]$script:Rows[-1].Remove('特殊菜单桌数')}
+    if($script:Failure -eq 'null-zero'){$script:Rows[-1]['特殊菜单桌数']=$null}
     if($script:Failure -eq 'after'){throw 'Simulated response lost after successful write'}
     return @{ok=$true;identity='bot'}
 }
@@ -160,6 +162,18 @@ Check '独占锁阻止并行写入、退出后释放' {
     Assert ((Preview 'demo.new_round').status -eq 'pending') 'Lock did not release'
 }
 Check '回读不符停留待查证，不以退出码零报成功' {
+    Assert (-not (Test-CrmFields @{} @{'特殊菜单桌数'=0})) 'Missing field matched numeric zero'
+    Assert (-not (Test-CrmFields @{'特殊菜单桌数'=$null} @{'特殊菜单桌数'=0})) 'Null matched numeric zero'
+    Assert (-not (Test-CrmFields @{'特殊菜单桌数'=''} @{'特殊菜单桌数'=0})) 'Empty string matched numeric zero'
+    Assert (Test-CrmFields @{'特殊菜单桌数'=0} @{'特殊菜单桌数'=0}) 'Numeric zero did not match'
+    Assert ((Get-CrmDisplayValue '特殊菜单桌数' 0) -ceq '0') 'Zero displayed as empty'
+    Reject {ConvertTo-CrmDate 0}
+    foreach($fault in @('missing-zero','null-zero')){
+        Reset;$p=Preview 'demo.new_round';$script:Failure=$fault
+        Assert ((Confirm $p.preview.code).status -eq 'unknown') 'Missing zero field reported creation success'
+        Assert ((Confirm $p.preview.code).status -eq 'unknown' -and $script:Writes -eq 1) 'Missing zero field caused duplicate creation'
+    }
+    Reset
     [void](Begin-Round);$p=Preview 'order.change' @{total_tables=31};$script:Failure='mismatch'
     Assert ((Confirm $p.preview.code).status -eq 'unknown') 'Mismatched readback success'
     Assert ((Confirm $p.preview.code).status -eq 'unknown' -and $script:Writes -eq 2) 'Mismatched write retried'

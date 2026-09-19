@@ -1,0 +1,30 @@
+name: Wedding offline checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: wedding-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  offline:
+    runs-on: windows-2025
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Check source boundaries and run 22 simulated cases
+        run: |
+          if ($PSVersionTable.PSVersion.Major -ne 5) { throw 'Windows PowerShell 5.1 required' }
+          & ./tests/Test-Repository.ps1 -OutputDirectory $env:RUNNER_TEMP
+          $report = Get-ChildItem -LiteralPath $env:RUNNER_TEMP -Directory -Filter 'wedding-offline-*' |
+            Sort-Object LastWriteTime -Descending | Select-Object -First 1
+          $result = Get-Content -LiteralPath (Join-Path $report.FullName 'checks.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+          if ($result.passed -ne 22 -or $result.real_feishu -ne $false) { throw 'Expected 22 offline checks, not live acceptance' }
+          "22 offline simulated checks passed. Real Feishu acceptance is recorded separately." >> $env:GITHUB_STEP_SUMMARY

@@ -4,7 +4,7 @@
 
 ## 固定版本
 
-Multica前后端与CLI 0.4.44；Claude Code 2.1.261；Lark CLI 1.0.90。实际婚宴 Run 的 task_usage 已核验模型为 claude-sonnet-5，Agent没有模型覆盖；本轮没有主动换模型。
+Multica前后端与CLI 0.4.44；Claude Code 2.1.261；Lark CLI 1.0.90。最终三轮及随后重启检查的29个Run记录模型claude-sonnet-5；其中一个Run还记录claude-haiku-4-5-20251001的14个输出token，其具体用途未单独核实。Agent没有模型覆盖，本轮没有修改模型配置。
 
 ## 候选切换
 
@@ -22,6 +22,8 @@ Multica前后端与CLI 0.4.44；Claude Code 2.1.261；Lark CLI 1.0.90。实际�
 沿用现场六个脚本：Start-Services、Start-Agent、Status、Stop-Agent、Stop-Services、Backup-Trial。daemon通过已有固定Start/Stop任务运行；服务只绑定本机。停止保留卷。
 
 完整备份包含数据库、附件、状态、配置、工具、证据、专用账户材料和最新婚宴Base只读快照。隔离恢复仅核对文件哈希和数据库，不启动Bot或业务执行，不覆盖远端Base。GitHub不代替数据备份。
+
+0.1.0已完成一次完整备份与隔离恢复：2,240个文件哈希一致，114张表及成员、绑定、Run、消息等数量一致。恢复容器断网且无对外端口；成功后只清理本次临时副本。加密凭据依赖原Windows账户，跨电脑恢复需要另外核验或重新授权。详细现场路径留在桌面文档，不入库。
 
 ## 发布与回退
 

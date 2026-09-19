@@ -13,3 +13,5 @@
 仓库仅保存源码、脱敏说明和配置示例。实际连接配置、凭据、原始聊天、状态、Base 快照、数据库、附件和备份留在本机。
 
 GitHub 离线检查不连接飞书，不启动 Claude、Multica 或 Docker。离线通过不等于演示验收通过。
+
+入口：[开发与检查](docs/DEVELOPMENT.md)、[部署回退](docs/DEPLOYMENT.md)、[演示话术](docs/DEMO.md)、[实际验收状态](docs/ACCEPTANCE.md)。

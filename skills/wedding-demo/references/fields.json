@@ -1,0 +1,106 @@
+[
+  {
+    "name": "订单编号",
+    "type": "text"
+  },
+  {
+    "name": "轮次",
+    "type": "text"
+  },
+  {
+    "name": "门店",
+    "type": "text"
+  },
+  {
+    "name": "客户称呼",
+    "type": "text"
+  },
+  {
+    "name": "婚期",
+    "type": "text"
+  },
+  {
+    "name": "场地",
+    "type": "text"
+  },
+  {
+    "name": "销售",
+    "type": "text"
+  },
+  {
+    "name": "宴会负责人",
+    "type": "text"
+  },
+  {
+    "name": "总桌数",
+    "type": "number"
+  },
+  {
+    "name": "特殊菜单桌数",
+    "type": "number"
+  },
+  {
+    "name": "菜单选项",
+    "type": "text"
+  },
+  {
+    "name": "计价规则版本",
+    "type": "text"
+  },
+  {
+    "name": "金额分",
+    "type": "number"
+  },
+  {
+    "name": "业务版本",
+    "type": "number"
+  },
+  {
+    "name": "接收状态",
+    "type": "text"
+  },
+  {
+    "name": "接收人",
+    "type": "text"
+  },
+  {
+    "name": "接收时间",
+    "type": "text"
+  },
+  {
+    "name": "布桌方案核对",
+    "type": "text"
+  },
+  {
+    "name": "布桌方案核对原因",
+    "type": "text"
+  },
+  {
+    "name": "布桌方案核对反馈人",
+    "type": "text"
+  },
+  {
+    "name": "布桌方案核对反馈时间",
+    "type": "text"
+  },
+  {
+    "name": "菜单变更交接",
+    "type": "text"
+  },
+  {
+    "name": "菜单变更交接原因",
+    "type": "text"
+  },
+  {
+    "name": "菜单变更交接反馈人",
+    "type": "text"
+  },
+  {
+    "name": "菜单变更交接反馈时间",
+    "type": "text"
+  },
+  {
+    "name": "最近操作号",
+    "type": "text"
+  }
+]

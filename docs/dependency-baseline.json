@@ -1,0 +1,47 @@
+{
+  "captured_at": "2026-09-19T18:22:40.2290446+08:00",
+  "local_prerequisites": [
+    {
+      "file": "ops\\Trial.ps1",
+      "sha256": "42AB53006E1AB6ECE8A43CDCA02F7EDBE14F837A73D3996846EE6F4335E2C4A3"
+    },
+    {
+      "file": "ops\\Start-Services.ps1",
+      "sha256": "ED45B791526C71B18192E602C4BD49671B0F3B8B948C36CF594815FB7D5586FB"
+    },
+    {
+      "file": "ops\\Start-Agent.ps1",
+      "sha256": "EDF11898619109A7401C38F6A27189A5E272A3F90505BEEA7F08327A72860671"
+    },
+    {
+      "file": "ops\\Status.ps1",
+      "sha256": "965677B397F8C6653842C7EE0CFBE5CDD16B7D44D2B285B5FE2D6BE087104D5E"
+    },
+    {
+      "file": "ops\\Stop-Agent.ps1",
+      "sha256": "036EA89CE2D2985938D39370A1EC3D925793A1ADD82EB8E806E78D57ED3D979D"
+    },
+    {
+      "file": "ops\\Stop-Services.ps1",
+      "sha256": "D1C8CB95A2117236F8FADB51F13E1163C7E8A978D24DC37F7FD3DF3417475687"
+    },
+    {
+      "file": "ops\\Backup-Trial.ps1",
+      "sha256": "5D7EA953BE59735B98F1C0D338F47ECFD072F3DC759620626FA821E8F7E8C07A"
+    },
+    {
+      "file": "ops\\Test-Isolation.ps1",
+      "sha256": "8F793621525B6A487F3E7E996D666A6713EC2055F0330853EF491DC70FB0F4FD"
+    },
+    {
+      "file": "vendor\\docker-compose.selfhost.yml",
+      "sha256": "C1B69F582FD538F691BF9C6F2756EFEDD599BA3F63C4AED791482ABD407AA787"
+    }
+  ],
+  "versions": {
+    "lark_cli": "1.0.90",
+    "multica": "0.4.44",
+    "observed_model": "claude-sonnet-5",
+    "claude_code": "2.1.261"
+  }
+}

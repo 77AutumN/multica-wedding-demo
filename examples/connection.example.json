@@ -1,0 +1,27 @@
+{
+  "ready": false,
+  "writes_enabled": false,
+  "bootstrap_only": true,
+  "deployment_id": "wedding-0.1.0-example",
+  "profile": "crm-trial",
+  "identity": "bot",
+  "cli_version": "1.0.90",
+  "cli_path": "D:\\Multica-CRM-Trial\\tools\\lark-cli\\lark-cli.exe",
+  "timezone": "Asia/Shanghai",
+  "base_name": "婚宴 Demo",
+  "base_token": "",
+  "orders_table_id": "",
+  "multica_agent_id": "",
+  "multica_chat_id": "",
+  "chat_id": "",
+  "chat_app_id": "",
+  "chat_installation_id": "",
+  "tool_app_id": "",
+  "sales_member": "sample-owner",
+  "banquet_member": "sample-test",
+  "members": [
+    {"member_key": "sample-owner", "display_name": "销售样例"},
+    {"member_key": "sample-test", "display_name": "宴会负责人样例"}
+  ],
+  "rules": {"capacity": 32, "unit_cents": 300000, "standard_menu": "标准套餐", "special_menu": "无海鲜套餐", "version": "wedding-sample-v1"}
+}
